@@ -17,18 +17,15 @@
 
 #include <unistd.h>
 
-// Define which Raspberry Pi board are you using. Take care to have defined only one at time.
-#define RPI
-//#define RPI2
+// Override to define Raspberry Pi 1, otherwise default to 2/3
+//#define RPI1
 
-#ifdef RPI
+#ifdef RPI1
 #define BCM2708_PERI_BASE       0x20000000
 #define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)	// GPIO controller 
 #define BSC0_BASE 		(BCM2708_PERI_BASE + 0x205000)	// I2C controller	
-#endif
-
-#ifdef RPI2
-#define BCM2708_PERI_BASE       0x3F000000
+#else
+#define BCM2708_PERI_BASE       0x40000000
 #define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)	// GPIO controller. Maybe wrong. Need to be tested.
 #define BSC0_BASE 		(BCM2708_PERI_BASE + 0x804000)	// I2C controller	
 #endif	
