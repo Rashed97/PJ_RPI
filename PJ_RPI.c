@@ -66,10 +66,17 @@ void wait_i2c_done() {
 
 void i2c_init()
 {
+#ifdef RPI1
     INP_GPIO(0);
     SET_GPIO_ALT(0, 0);
     INP_GPIO(1);
     SET_GPIO_ALT(1, 0);
+#else
+    INP_GPIO(2);
+    SET_GPIO_ALT(0, 0);
+    INP_GPIO(3);
+    SET_GPIO_ALT(1, 0);
+#endif
 } 
 
 // Priority 
